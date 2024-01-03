@@ -1,0 +1,12 @@
+import re
+
+def extract_matching_values(collections_list):
+    pattern = re.compile(r'P\d+[A-Z0-9-]*')
+    result = [match.group() for item in collections_list for match in [pattern.search(item)] if match]
+    return list(set(result))  # Use set to remove duplicates and convert back to a list
+
+Collections = ['P018B18', 'P018B18', 'Protuction', 'P800406', 'PV', 'P01B90ZKN', 'PV', 'Protuction', 'PV', 'P800406', 'P38VXIL', 'Palettennummer', 'Palettenart', 'PAPER', 'PACKAGING', 'P01A774', 'Palettennummer', 'Palettenart', 'P00751B', 'Personalnr', 'P00751B', 'Personalnr', 'P723658-70', 'P01A82E-00', 'P01A82E-00', 'Plant', 'Plant', 'P003C52', 'P003C52', 'PHONE', 'PACKER', 'P01EF99-00', 'Poznan', 'Production', 'Poznanska', 'Podgorne', 'Poznan', 'Premium', 'PACKER', 'P01EF99-00', 'PRODUCTION', 'PO', 'P01EF99-00', 'P800327', 'Product', 'P800327']
+
+Result = extract_matching_values(Collections)
+print(Result)
+
