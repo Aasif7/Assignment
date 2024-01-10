@@ -1,0 +1,33 @@
+import streamlit as st
+from streamlit_webrtc import webrtc_streamer
+ 
+def main():
+    st.title("Document Image Capture App")
+ 
+    # Set up the WebRTC streamer
+    webrtc_streamer(
+        key="document-capture",
+        video_processor=process_frame,
+        async_processing=True,
+    )
+ 
+def process_frame(frame):
+    # Display the webcam feed
+    st.image(frame.to_ndarray(format="jpeg"), channels="BGR")
+ 
+    # Add your image capture logic here
+    # You can use a button to trigger the capture or capture automatically
+ 
+    # Example button for capturing image
+    if st.button("Capture Image"):
+        # Capture the current frame as an image
+        captured_image = frame.to_ndarray(format="jpeg")
+ 
+        # Display the captured image
+        st.image(captured_image, channels="BGR", caption="Captured Image")
+ 
+        
+ 
+if __name__ == "__main__":
+    main()
+ 
