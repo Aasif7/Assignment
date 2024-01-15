@@ -61,14 +61,13 @@ def main():
             # Store the captured frame
             captured_frames.append(frame.copy())
 
-            # Display the captured frames
-            for img in captured_frames:
-                captured_images.image(img, channels="BGR", use_column_width=True)
-        else:
-            st.error("Error: Failed to capture frame.")
+    # Display all the captured frames
+    for img in captured_frames:
+        captured_images.image(img, channels="BGR", use_column_width=True)
 
     # Release the video capture object when done
     cap.release()
 
 if __name__ == "__main__":
     main()
+    
